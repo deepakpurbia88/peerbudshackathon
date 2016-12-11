@@ -1,0 +1,174 @@
+<div class="container-fluid">
+<div ng-show="mainDiv">
+    
+	<div class="row">
+		<div class="col-md-3 usermgmtlabel"><strong>Votes</strong></div>
+		<div class="col-md-6">
+			<div class="input-group">
+          		<input type="text" name="mySearch"class="form-control" placeholder="Search Post" ng-model="searchTerm">
+	              <span class="input-group-btn">
+	                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+	                </button>
+	              </span>
+        	</div>
+             <!--div ng-show="searchTerm.length==0">Please enter a valid user</div>-->
+             <div ng-show="searchMsg">
+	             <p> <span ng-if="!displayedUser.length" class="errorColor">
+	                  No posts exists
+	                 </span>
+	             </p> 
+             </div>
+        </div>
+
+		
+		
+	</div>
+	<br/>
+	
+	<br>
+	
+		<div class="row" style="border:1px solid #ddd;" ng-repeat="item in currentPageData | filter : searchTerm">
+			<br>
+			<div class="col-sm-12 text-left">
+				<h3 class="col-sm-8">
+                  {{item._Title}}
+                </h3>
+                <small class="col-sm-4 text-right"><i class="fa fa-calendar-o"></i> Post Published: {{item._CreationDate}}
+                	<br>
+                	<strong>Posted Users Id: {{item._OwnerUserId}}</strong>
+                </small>
+            </div>
+            <div class="col-sm-12">
+            	<div class="col-sm-4">
+          <div class="info-box bg-green">
+            <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Score</span>
+              <span class="info-box-number">{{item._Score}}</span>
+
+              <div class="progress">
+                <div class="progress-bar" style="width: 70%"></div>
+              </div>
+                  <span class="progress-description">
+                    Increasing...
+                  </span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+      		</div>
+      		<div class="col-sm-8 tableScrollY">
+				<div ng-bind-html="item._Body"></div>
+                  
+                
+                <br>
+            </div>
+           </div>
+           <br>
+            <div class="row">
+            	
+            	
+            	
+      		<div class="col-sm-3">
+          	<!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>{{item._ViewCount}}</h3>
+
+              <p>Count</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-pie-graph"></i>
+            </div>
+            
+          </div>
+          <!-- /.info-box -->
+      		</div>
+      		<div class="col-sm-3">
+          <div class="info-box bg-red">
+            <span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Comments</span>
+              <span class="info-box-number">{{item._CommentCount}}</span>
+
+              <div class="progress">
+                <div class="progress-bar" style="width: 70%"></div>
+              </div>
+                  <span class="progress-description">
+                    Commenting...
+                  </span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+      		</div>
+      		<div class="col-sm-3">
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Favorites</span>
+              <span class="info-box-number">{{item._FavoriteCount}}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+      		</div>
+      		<div class="col-sm-3">
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Answers Count</span>
+              <span class="info-box-number">{{item._AnswerCount}}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+      		</div>
+      		
+          
+        </div>
+        <br>
+        <div class="row">
+        	<div class="col-sm-2"></div>
+		<div class="col-md-8 text-center">
+			<h3 ng-if="item._Tags">Tags: {{item._Tags}}</h3>
+        </div>	
+        <div class="col-sm-2"></div>
+	</div>
+  <div class="row">
+    <div class="col-sm-12 text-left">
+      <div class="info-box-content">
+          <span><i class="fa fa-thumbs-up"></i></span>
+          
+          <span class="info-box-number">{{item._Score}}</span>
+          <span><i class="fa fa-thumbs-down"></i></span>
+      </div>
+    </div>
+    
+
+  </div>
+
+            	 <br>
+            	 <!-- End of item -->
+            	</div>
+
+            </div>
+<div class="row">
+		<div class="col-md-12 text-center">
+			<pagination 
+      ng-model="currentPage"
+      total-items="data.length"
+      max-size="maxSize"  
+      boundary-links="true">
+    </pagination>
+
+		</div>
+	</div>
+</div>
+
+
+	

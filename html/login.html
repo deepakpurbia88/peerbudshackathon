@@ -1,0 +1,37 @@
+ <div class="login-box">
+  <div class="login-logo">
+    <img src="./images/Peerbuds-logo.png" class="img-responsive" id="logo">
+    <b>Peerbuds</b>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    
+<form name="form" ng-submit="signin()" role="form">
+      <div class="form-group has-feedback">
+        <input type="text"  name="username" ng-model="username" class="form-control" placeholder="Username" required>
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        <span ng-show="form.username.$dirty && form.username.$error.required" >Please enter User Name</span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" name="pwd" ng-model="pwd" class="form-control" placeholder="Password" required>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <span ng-show="form.pwd.$dirty && form.pwd.$error.required">Please enter Password</span>
+     </div>
+      <div class="row">
+        <div class="col-xs-8"></div>
+        <div class=" form-actions col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat" ng-disabled="!form.$dirty">SignIn</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+<div class="row" ng-show="statusDiv">
+  <br>
+  <div class="col-sm-12 text-center">
+    <label class="alert alert-danger" ng-bind="status"></label>
+  </div>
+</div>
